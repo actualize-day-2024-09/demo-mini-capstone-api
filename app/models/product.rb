@@ -20,11 +20,14 @@ class Product < ApplicationRecord
     price + tax
   end
 
-  def supplier
-    Supplier.find_by(id: supplier_id)
-  end
+  belongs_to :supplier
+  # validates :supplier_id, presence: true
+  # def supplier
+  #   Supplier.find_by(id: supplier_id)
+  # end
 
-  def images
-    Image.where(product_id: id)
-  end
+  has_many :images
+  # def images
+  #   Image.where(product_id: id)
+  # end
 end
