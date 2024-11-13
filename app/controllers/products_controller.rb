@@ -9,8 +9,10 @@ class ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
+      supplier_id: params[:supplier_id],
     )
     if @product.valid?
+      Image.create(product_id: @product.id, url: params[:image_url])
       render :show
     else
       render json: { errors: @product.errors.full_messages }, status: 422
