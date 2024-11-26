@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :description, length: { in: 1..5000 }
 
+  has_many :orders
+
   TAX_RATE = 0.09
 
   def is_discounted?
