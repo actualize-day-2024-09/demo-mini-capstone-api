@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: params[:id])
+    @order = current_user.orders.find_by(id: params[:id]) # or Order.find_by(id: params[:id], user_id: current_user.id)
     render :show
   end
 end
