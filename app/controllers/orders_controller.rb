@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @orders = current_user.orders # or Order.where(user_id: current_user.id)
     render :index
   end
 
