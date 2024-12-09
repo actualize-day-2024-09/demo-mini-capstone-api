@@ -18,6 +18,20 @@ Product.create(supplier_id: 1, quantity: 100, name: "DnD Dice set", price: 57, d
 Product.create(supplier_id: 2, quantity: 100, name: "Sonic Screwdriver", price: 9, description: "The Doctor's sciencey magic wand to get out of tight spots. Note: does not work on wood")
 Product.create(supplier_id: 1, quantity: 100, name: "Yoda sleeping bag", price: 40, description: "For real")
 
+Category.create(name: "Weapons")
+Category.create(name: "Star Wars")
+Category.create(name: "Household goods")
+
+CategoryProduct.create(category_id: 1, product_id: 3)
+CategoryProduct.create(category_id: 1, product_id: 4)
+CategoryProduct.create(category_id: 1, product_id: 6)
+CategoryProduct.create(category_id: 2, product_id: 3)
+CategoryProduct.create(category_id: 2, product_id: 7)
+CategoryProduct.create(category_id: 3, product_id: 1)
+CategoryProduct.create(category_id: 3, product_id: 2)
+CategoryProduct.create(category_id: 3, product_id: 5)
+CategoryProduct.create(category_id: 3, product_id: 7)
+
 Image.create(product_id: 1, url: "https://i.pinimg.com/236x/14/4a/0b/144a0bffe37f29f414e2dae2bd0141cf.jpg")
 Image.create(product_id: 2, url: "http://www.notcot.com/images/guide.gif")
 Image.create(product_id: 3, url: "http://25.media.tumblr.com/d2456964024018fd930338c099371104/tumblr_n2m73lTx2Q1svn82uo1_400.gif")
