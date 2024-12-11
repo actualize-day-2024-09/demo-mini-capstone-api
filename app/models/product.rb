@@ -7,14 +7,15 @@ class Product < ApplicationRecord
   validates :description, length: { in: 1..5000 }
 
   has_many :category_products
-  has_many :orders
-
   has_many :categories, through: :category_products
   # def categories
   #   category_products.map do |category_product|
   #     Category.find_by(id: category_product.category_id)
   #   end
   # end
+
+  has_many :carted_products
+  has_many :orders, through: :carted_products
 
   TAX_RATE = 0.09
 
