@@ -7,26 +7,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
-    calculated_subtotal = 0
-    calculated_tax = 0
-    carted_products.each do |carted_product|
-      calculated_subtotal += carted_product.quantity * carted_product.product.price
-      calculated_tax += carted_product.quantity * carted_product.product.tax
-    end
-    calculated_total = calculated_subtotal + calculated_tax
-
     @order = Order.create(
       user_id: current_user.id,
-      subtotal: calculated_subtotal,
-      tax: calculated_tax,
-      total: calculated_total,
     )
-
-    carted_products.each do |carted_product|
-      carted_product.update(status: "purchased", order_id: @order.id)
-    end
-
+    carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
+    carted_products.update_all(status: "purchased", order_id: @order.id)
+    @order.update_totals
     render :show
   end
 
