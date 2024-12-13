@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       cookie = { value: user.id }
       cookies.signed[:user_id] = cookie.merge(cookie_settings)
-      render json: { email: user.email, user_id: user.id }, status: :created
+      render json: { email: user.email, user_id: user.id, admin: user.admin }, status: :created
     else
       render json: {}, status: :unauthorized
     end
