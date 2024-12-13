@@ -1,4 +1,6 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
     render :index
